@@ -1,0 +1,9 @@
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\obj\Debug\KanbanSequencingSystem.csproj.CoreCompileInputs.cache
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\bin\Debug\res\ExcelFile.xlsx
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\bin\Debug\KanbanSequencingSystem.exe.config
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\bin\Debug\KanbanSequencingSystem.exe
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\bin\Debug\KanbanSequencingSystem.pdb
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\obj\Debug\KanbanSequencingSystem.exe
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\obj\Debug\KanbanSequencingSystem.pdb
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\obj\Debug\KanbanSequencingSystem.csproj.ResolveComReference.cache
+F:\MyDocuments\Projets\JOBSEC\Dev\Source\obj\Debug\KanbanSequencingSystem.csprojAssemblyReference.cache
