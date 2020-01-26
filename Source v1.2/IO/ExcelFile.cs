@@ -8,20 +8,19 @@ namespace JOBSEC
     public class ExcelFile
     {
 
-        private string          path;                               // Variable containing the path to the excel file 
-        private Workbook        wb;                                 // Variable containing the workbook object related to the file
-        private _Application    excel;                              // Variable containing the application excel launched 
-        private bool            wbIsOpen        = false;            // State variable giving the state of the file : opened or not 
-        private int             fitnessUpdate   = 0;                // Variable for number of fitness save 
+        private string          path;                                   // Variable containing the path to the excel file 
+        private Workbook        wb;                                     // Variable containing the workbook object related to the file
+        private _Application    excel;                                  // Variable containing the application excel launched 
+        private bool            wbIsOpen        = false;                // State variable giving the state of the file : opened or not 
+        private int             fitnessUpdate   = 0;                    // Variable for number of fitness save 
 
 
-
+        // Class constructor using the excelfile path to call excel 
+        // application and read / write excel file
         public ExcelFile(string path)
         {
-            
-            this.path = path;
-
-            try
+            this.path = path;                                           // Initialize workbook path 
+            try                                                         // try to open an excel application 
             {
                 excel = new Microsoft.Office.Interop.Excel.Application();
             }
