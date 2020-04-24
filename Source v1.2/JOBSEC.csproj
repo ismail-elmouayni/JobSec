@@ -71,7 +71,7 @@
     <Compile Include="Simulation\SimpleEngine.cs" />
     <Compile Include="Utilities\AlgoTimer.cs" />
     <Compile Include="HumanFactors\FatigueParametersGenerators.cs" />
-    <Compile Include="Utilities\MyConsole.cs" />
+    <Compile Include="IO\MyConsole.cs" />
     <Compile Include="Utilities\ProgressBar.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="IO\ExcelFile.cs" />

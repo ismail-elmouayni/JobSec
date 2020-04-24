@@ -8,40 +8,43 @@ namespace JOBSEC
     public class ExcelFile
     {
 
-        private string          path;                                   // Variable containing the path to the excel file 
-        private Workbook        wb;                                     // Variable containing the workbook object related to the file
-        private _Application    excel;                                  // Variable containing the application excel launched 
-        private bool            wbIsOpen        = false;                // State variable giving the state of the file : opened or not 
-        private int             fitnessUpdate   = 0;                    // Variable for number of fitness save 
+        private string          path;                                       // Variable containing the path to the excel file 
+        private Workbook        wb;                                         // Variable containing the workbook object related to the file
+        private _Application    excel;                                      // Variable containing the application excel launched 
+        private bool            wbIsOpen        = false;                    // State variable giving the state of the file : opened or not 
+        private int             fitnessUpdate   = 0;                        // Variable for number of fitness save 
 
 
         // Class constructor using the excelfile path to call excel 
         // application and read / write excel file
         public ExcelFile(string path)
         {
-            this.path = path;                                           // Initialize workbook path 
-            try                                                         // try to open an excel application 
+            this.path = path;                                               // Initialize workbook path 
+            try                                                             // try to open an excel application 
             {
-                excel = new Microsoft.Office.Interop.Excel.Application();
+                excel = new Microsoft.Office.Interop.Excel.Application();   
             }
             catch (Exception e)
             {
-                MyConsole.displayError(e.ToString());
+                MyConsole.displayError(e.ToString());   
             }
         }
 
 
-
-        public Boolean isLoaded()
+        // Returns true when Excel application 
+        // is successfully loaded in memory
+        public Boolean AppIsLoaded()
         {
             return (!(excel != null)); 
         }
 
+
+        // Opens workbook for data read-write 
         public void open()
         {
             if (excel==null)
             {
-                MyConsole.displayError("Error ! couldn't create an excel application instance");
+                MyConsole.displayError("Couldn't create an excel application instance");
             }
             else
             {
@@ -52,15 +55,14 @@ namespace JOBSEC
                 }
                 catch (Exception e)
                 {
-                    MyConsole.displayError("ERROR :");
                     MyConsole.displayError(e.ToString());
                 }
             }
       
         }
 
-
-        public double read(int sheetIndex, int row, int colomn)
+        // Read the content of a cell in the workbook 
+        public double readCell(int sheetIndex, int row, int colomn)
         {
             if (wb != null)
             {
@@ -76,17 +78,17 @@ namespace JOBSEC
                 }
                 
             }
-                
             else
             {
-                MyConsole.displayError("ERROR : ");
                 MyConsole.displayError("Can't read a cell, the workbook couldn't be initilized or excel file is not open");
                 MyConsole.displayError("Use instruction excelFile.open()");
                 return READ_OPERATION_FAILED; 
             }
         }
 
-        public void write(float value, int sheetIndex, int row, int colomn)
+
+        // Write a float in a cell of the workbook (excel file) 
+        public void writeCell(float value, int sheetIndex, int row, int colomn)
         {
             if (wb != null)
             {
@@ -95,15 +97,14 @@ namespace JOBSEC
             }
             else
             {
-                MyConsole.displayError("ERROR : ");
                 MyConsole.displayError("Can't read a cell, the workbook couldn't be initilized or excel file is not open");
                 MyConsole.displayError("Use instruction excelFile.open()");
             }
           
         }
 
-
-        public void write(String value, int sheetIndex, int row, int colomn)
+        // Write  a string in a cell of the workbook (excelFile) 
+        public void writeCell(String value, int sheetIndex, int row, int colomn)
         {
             if (wb != null)
             {
@@ -112,34 +113,39 @@ namespace JOBSEC
             }
             else
             {
-                MyConsole.displayError("ERROR : ");
                 MyConsole.displayError("Can't read a cell, the workbook couldn't be initilized or excel file is not open");
                 MyConsole.displayError("Use instruction excelFile.open()");
             }
 
         }
 
+
+        // Returns the number of columns of a sheet 
         public int endColomns(int sheetIndex)
         {
             return wb.Worksheets[sheetIndex].Colomns.Count; 
         }
 
+        // Returns the number of rows of a sheet 
         public int endRows(int sheetIndex)
         {
             return wb.Worksheets[sheetIndex].Rows.Count;
         }
 
+        // Number of fitness upadates after an enhancement
         public int getNumOfFitnessUpdate()
         {
             return fitnessUpdate; 
         }
 
 
+        // Set the number of fitness updates 
         public void setNumOfFitnessUpdate(int fitnessUpdate)
         {
             this.fitnessUpdate = fitnessUpdate; 
         }
 
+        // Close the work book 
         public void close ()
         {
             wb.Close();
@@ -147,16 +153,13 @@ namespace JOBSEC
         }
 
 
-        ~ExcelFile()
-        {
-            excel.Quit(); 
-        }
+        // Class destructor ending to 
+        // excel application closing 
+        ~ExcelFile() { excel.Quit();  }
 
 
-        // constant for EXCEL FILE sheet indices //
-        // ------------------------------------- //
-        // Need to be enhanced by looking at sheets 
-        // ... labels
+        // EXCEL FILE sheet indices  ------------------------------------- 
+        // Can be enhanced by looking at sheets labels
 
         public const int        READ_OPERATION_FAILED                   = -1,
                                 MAIN_SHEET_INDEX                        = 2,

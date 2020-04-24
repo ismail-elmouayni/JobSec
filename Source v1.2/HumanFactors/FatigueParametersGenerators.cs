@@ -4,15 +4,17 @@ namespace JOBSEC
 {
     class FatigueParametersGenerators
     {
-        public const int    IFATIGUE_RATE = 0;           // Index of fatigue rate in the output file 
-        public const int    IRECOVERY_RATE = 1;          // Index of recovery rate in the output file
+        public const int    IFATIGUE_RATE   = 0;         // Index of fatigue rate in the output file 
+        public const int    IRECOVERY_RATE  = 1;         // Index of recovery rate in the output file
 
-        public const float DELTA_F = 0.01f;              // 1-DELTA_F is of fatigue index representing 
-                                                         // ...fatigued operator. Close to 1........
-        public const float DELTA_R = 0.01f;              // The fatigue index value representing total
-                                                         // ...recovery, different thant 0 (and very small)
-        public const float ENDURANCE_LIMIT = 360;        // Time that the worker can perform without...
-                                                          // ...leading to total exhaution
+        public const float  DELTA_F         = 0.01f;     // 1-DELTA_F is of fatigue index representing 
+                                                         // fatigued operator. 
+
+        public const float  DELTA_R         = 0.01f;     // The fatigue index value representing total
+                                                         // recovery, different thant 0 but close enough
+
+        public const float  ENDURANCE_LIMIT = 360;       // Time wihin it if the worker perform an action
+                                                         // continously, will leads to total exhaution 
 
         String version = "1";
         String methodShortName = "ILO";
@@ -37,13 +39,11 @@ namespace JOBSEC
                                                 {1.01f,1.03f,1.05f,1.06f,1.07f,1.09f,1.10f,1.12f,1.13f,1.15f},
                                                 };
 
-
-
         public float[] genFatigueRate(float[] stressFactorsLevels)
         {
 
             float   numOfStressPoints   = 0;
-            float[] output = new float[2]; 
+            float[] output              = new float[2]; 
 
 
             // Process the sum of stress levels 
@@ -51,9 +51,12 @@ namespace JOBSEC
             {
                 numOfStressPoints = numOfStressPoints + stressFactorsLevels[i];
             }
-        
+
             // Convert into allowance time 
-            float allowancePercent = conMatrix[(int)(numOfStressPoints / (10.0f)),(int)(numOfStressPoints - ((int)(numOfStressPoints / (10.0f))) * 10)];
+
+            int     matrixRowIndex      = (int)(numOfStressPoints / (10.0f));
+            int     matrixColomnIndex   = (int)(numOfStressPoints - ((int)(numOfStressPoints / (10.0f))) * 10); 
+            float   allowancePercent    = conMatrix[matrixRowIndex,matrixColomnIndex];
            
             // Process fatigue rate
             output[IFATIGUE_RATE]   = (float)(Math.Log(1 / DELTA_F) * (1 + allowancePercent) / ENDURANCE_LIMIT);
@@ -61,9 +64,5 @@ namespace JOBSEC
 
             return output; 
         }
-
-
-
-
     }
 }

@@ -32,3 +32,9 @@ G:\MyDocuments\Projets\Developments\C\jobsecDev\Source v1.2\obj\Debug\JOBSEC.csp
 G:\MyDocuments\Projets\Developments\C\jobsecDev\Source v1.2\obj\Debug\JOBSEC.csproj.CopyComplete
 G:\MyDocuments\Projets\Developments\C\jobsecDev\Source v1.2\obj\Debug\JOBSEC.exe
 G:\MyDocuments\Projets\Developments\C\jobsecDev\Source v1.2\obj\Debug\JOBSEC.pdb
+P:\Projets\JobSec\Source v1.2\obj\Debug\JOBSEC.csprojAssemblyReference.cache
+P:\Projets\JobSec\Source v1.2\obj\Debug\Interop.APPVERIFIER.dll
+P:\Projets\JobSec\Source v1.2\obj\Debug\JOBSEC.csproj.ResolveComReference.cache
+P:\Projets\JobSec\Source v1.2\obj\Debug\JOBSEC.csproj.CoreCompileInputs.cache
+P:\Projets\JobSec\Source v1.2\obj\Debug\JOBSEC.exe
+P:\Projets\JobSec\Source v1.2\obj\Debug\JOBSEC.pdb
